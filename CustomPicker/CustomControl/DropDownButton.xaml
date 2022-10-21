@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Frame xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       BorderColor="Gray"
+       Padding="10"
+       x:Name="this"
        x:Class="CustomPicker.CustomControl.DropDownButton">
 
     <Grid RowDefinitions="Auto"
-          ColumnDefinitions="*,20">
-        <Label Text="Select Outlet"
+          ColumnDefinitions="*,20,20">
+        <Label x:Name="lblDropDown"
+               Text="Select Outlet"
                Grid.Row="0"
                Grid.Column="0" />
         <Image Source="dotnet_bot.svg"
                HeightRequest="20"
                WidthRequest="20"
                Grid.Row="0"
-               Grid.Column="1"/>
+               Grid.Column="1" />
+        <ActivityIndicator Grid.Row="0"
+                           Grid.Column="2" 
+                           HeightRequest="20"
+                           WidthRequest="20"
+                           IsVisible="{Binding Source={x:Reference this}, Path=IsLoading}"
+                           IsRunning="True"/>
     </Grid>
+    <Frame.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+    </Frame.GestureRecognizers>
 </Frame>

@@ -9,7 +9,26 @@
                              Padding="30,0"
                              VerticalOptions="Center">
 
-            <customControls:DropDownButton />
+            <customControls:DropDownButton x:Name="dropDownControl"
+                                           Placeholder="--Select Outlet--"
+                                           ItemSource="{Binding Outlets}"
+                                           IsLoading="{Binding IsLoading}"
+                                           CurrentItem="{Binding CurrentOutlet}"
+                                           IsDisplayPickerControl="{Binding IsDiplayPicker}"
+                                           OpenPickerCommand="{Binding OpenPickerCommand}"
+                                           DisplayMember="Name"
+                                           >
+                <customControls:DropDownButton.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray">
+                            <Label Text="{Binding Name}"
+                                   Padding="5,5,0,5"
+                                   FontSize="20" />
+                        </Frame>
+
+                    </DataTemplate>
+                </customControls:DropDownButton.ItemTemplate>
+            </customControls:DropDownButton>
 
         </VerticalStackLayout>
     </ScrollView>
