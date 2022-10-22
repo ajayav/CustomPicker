@@ -11,6 +11,23 @@ public partial class DropDownButton : Frame
         InitializeComponent();
     }
 
+    
+
+  
+
+   public static readonly BindableProperty ItemSourceProperty = BindableProperty.Create(
+   propertyName: nameof(ItemSource),
+   returnType: typeof(IEnumerable),
+   declaringType: typeof(DropDownButton),
+   defaultBindingMode: BindingMode.OneWay
+   );
+
+    public IEnumerable ItemSource
+    {
+        get => (IEnumerable)GetValue(ItemSourceProperty);
+        set => SetValue(ItemSourceProperty, value);
+    }
+
     public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(
     propertyName: nameof(Placeholder),
     returnType: typeof(string),
@@ -24,6 +41,7 @@ public partial class DropDownButton : Frame
         get => (string)GetValue(PlaceholderProperty);
         set => SetValue(PlaceholderProperty, value);
     }
+
     private static void PlaceholderPropertyChanged(BindableObject bindable, object oldValue, object newValue)
     {
         var controls = (DropDownButton)bindable;
@@ -60,18 +78,7 @@ public partial class DropDownButton : Frame
     }
 
 
-    public static readonly BindableProperty ItemSourceProperty = BindableProperty.Create(
-      propertyName: nameof(ItemSource),
-      returnType: typeof(IEnumerable),
-      declaringType: typeof(DropDownButton),
-      defaultBindingMode: BindingMode.OneWay
-      );
-
-    public IEnumerable ItemSource
-    {
-        get => (IEnumerable)GetValue(ItemSourceProperty);
-        set => SetValue(ItemSourceProperty, value);
-    }
+ 
 
     public static readonly BindableProperty IsLoadingProperty = BindableProperty.Create(
         propertyName: nameof(IsLoading),
@@ -134,9 +141,11 @@ public partial class DropDownButton : Frame
     public DataTemplate ItemTemplate { get; set; }
     public double PickerHeight { get; set; }
     public string DisplayMember { get; set; }
+
     private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
     {
         OpenPickerCommand?.Execute(null);
+        //IsDisplayPickerControl = true;
         //OpenPickerEvent.Invoke(sender, e);
     }
 }

@@ -9,7 +9,7 @@ public partial class MainPage : ContentPage
 	{
 		
 		InitializeComponent();
-		//this.BindingContext = new MainPageViewModel();
+		this.BindingContext = new MainPageViewModel();
 	}
 
 	//private async void dropDownControl_OpenPickerEvent(object sender, EventArgs e)

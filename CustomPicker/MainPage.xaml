@@ -17,14 +17,15 @@
                                            IsDisplayPickerControl="{Binding IsDiplayPicker}"
                                            OpenPickerCommand="{Binding OpenPickerCommand}"
                                            DisplayMember="Name"
+                                           PickerHeight="200"
                                            >
                 <customControls:DropDownButton.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="Gray">
+                        
                             <Label Text="{Binding Name}"
                                    Padding="5,5,0,5"
                                    FontSize="20" />
-                        </Frame>
+                      
 
                     </DataTemplate>
                 </customControls:DropDownButton.ItemTemplate>

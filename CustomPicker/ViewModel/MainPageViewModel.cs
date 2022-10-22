@@ -16,18 +16,19 @@ namespace CustomPicker.ViewModel
         private bool _isDisplayPicker;
 
         [ObservableProperty]
-        private bool _currentOutlet;
+        private Outlet _currentOutlet;
 
         public MainPageViewModel()
         {
-
+            CurrentOutlet = new Outlet { Name = "Mint Super Bazar" };
         }
 
         [RelayCommand]
-        public void OpenPicker()
+        public async void OpenPicker()
         {
             IsLoading = true;
-
+            await Task.Delay(2000);
+            Outlets.Clear();
             Outlets.Add(new Outlet { Name = "Mint Super Bazar" });
             Outlets.Add(new Outlet { Name = "Mint Hebbal" });
             Outlets.Add(new Outlet { Name = "Mint Wtf" });
